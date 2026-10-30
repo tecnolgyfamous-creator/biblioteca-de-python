@@ -1,0 +1,38 @@
+#modulo hecho por erick cabrera si lo demas ta mal nose este modulo es echo por mi xd
+class libros:
+    def __init__(self, titulo, autor, genero, stock):
+        self.titulo = titulo
+        self.autor = autor
+        self.genero = genero
+        self.stock = stock
+
+    def mostrar_info(self):
+        print(f"Título: {self.titulo} Autor: {self.autor} Género: {self.genero} Stock: {self.stock}")
+
+inventario_libros = [
+
+    libros("chupa el perro", "german garmendia", "comedia", 2),
+    libros("luna de pluton ", "dross", "ciencia ficcion", 5),
+    libros("el señor de los anillos", "tolkien", "fantasia", 6),
+    libros("ojos de plata", "scott cawton", "terror", 8),
+    libros("yo cambio","jeanpaul","drama",9),
+
+ ]
+
+def buscar_libro(titulo_buscado):
+        encontrado = False
+        for libro in inventario_libros:
+            if libro.titulo.lower() == titulo_buscado.lower():
+                print("\n libro encontrado")
+                libro.mostrar_info()
+                encontrado = True
+                break
+        if not encontrado:
+         print(f"\n El libro '{titulo_buscado}' no esta disponible")
+
+def mostrar_inventario():
+    print("\ninventario:")
+    for libro in inventario_libros:
+        libro.mostrar_info()
+
+
