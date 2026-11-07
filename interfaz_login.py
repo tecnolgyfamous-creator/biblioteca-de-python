@@ -1,6 +1,7 @@
 import customtkinter as ctk
-import usuario 
-from customtkinter import CTkMessagebox
+import usuario
+import interfaz_main
+from tkinter import messagebox
 
 
 ctk.set_widget_scaling(1.5)
@@ -32,7 +33,15 @@ contraseña_caja.grid(  row=1,column=1 , padx=10, pady=10)
 
 def verificar_login():
         login= usuario.usuario(usuario_caja.get() ,contraseña_caja.get() )
-        login.autenticar_usuario()
+        status = login.autenticar_usuario()
+        if(status == True):
+            ventana.destroy()
+            app = interfaz_main.ventanaMain()
+            app.mainloop()
+        else:
+            messagebox.showerror(
+            "Error de inicio de sesión",
+            "Usuario o contraseña incorrectos.")
         print()
 
 boton_entrar = ctk.CTkButton( container, text="Entrar", font=("arial", 14, "bold"), width=15, fg_color="#1C1D59", text_color="white" ,command=verificar_login)

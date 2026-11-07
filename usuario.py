@@ -25,12 +25,12 @@ class usuario:
             for u in lista_usuarios:
                  if u['usuario'] == usuario and u['contraseña'] == contraseña:
                     mostrar_bienvenida(u)
-                    return u
+                    return True
             intentos -=1
             print(f"\n  Datos incorrectos. Te quedan {intentos} intentos.\n")
 
         print("Has superado el limite de intentos.")
-        return{}
+        return False
 
 
 def mostrar_bienvenida(u):
