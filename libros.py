@@ -19,25 +19,34 @@ inventario_libros = [
 
  ]
 
-COLUMNAS = ["TITULO", "GENERO", "STOCK"]
+COLUMNAS = ["TITULO", "AUTOR", "GENERO", "STOCK"]
+ANCHOS = [30, 22, 20, 5]
 
 def crear_matriz():
-    """Extrae los datos de inventario_libros y arma la matriz dinámicamente."""
+    
     matriz = []
     for libro in inventario_libros:
-        matriz.append([libro.titulo.strip(), libro.genero, libro.stock])
+        matriz.append([libro.titulo.strip().title(), libro.autor.title(), libro.genero, libro.stock])
     return matriz
 
-def mostrar_matriz():
-    """Muestra la matriz formateada en la consola."""
+def mostrar_inventario():
+    
     matriz = crear_matriz()
-    print("\n=== MATRIZ DE LIBROS ===")
-    print(f"{COLUMNAS[0]:30} {COLUMNAS[1]:20} {COLUMNAS[2]}")
-    for i in range(len(matriz)):
-        for j in range(len(matriz[i])):
-            ancho = 30 if j == 0 else 20 if j == 1 else 0
-            print(f"{str(matriz[i][j]):{ancho}}", end=" ")
-        print()
+    print("\n=== INVENTARIO DE LIBROS ===")
+
+    encabezado = ""
+    for j in range(len(COLUMNAS)):
+        encabezado += f"{COLUMNAS[j]:{ANCHOS[j]}} "
+    print(encabezado)
+    print("-" * (sum(ANCHOS) + len(ANCHOS)))
+
+    for fila in matriz:
+        linea = ""
+        for j in range(len(fila)):
+            linea += f"{str(fila[j]):{ANCHOS[j]}} "
+        print(linea)
+
+
 
 def buscar_libro(titulo_buscado):
         encontrado = False
@@ -50,9 +59,5 @@ def buscar_libro(titulo_buscado):
         if not encontrado:
          print(f"\n El libro '{titulo_buscado}' no esta disponible")
 
-def mostrar_inventario():
-    print("\ninventario:")
-    for libro in inventario_libros:
-        libro.mostrar_info()
 
 
