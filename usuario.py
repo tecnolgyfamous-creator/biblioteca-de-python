@@ -1,3 +1,5 @@
+from permisos import buscar_usuario_recursivo
+
 """ lista """
 
 lista_usuarios = [
@@ -15,22 +17,26 @@ class usuario:
 
     
 
+class usuario:
+    def __init__(self, usuario, contraseÑa):
+        self.usuario = usuario
+        self.contraseÑa = contraseÑa
+
     def autenticar_usuario(self):
         print("INICIO DE SESIÓN")
         intentos = 3
         while intentos > 0:
-            usuario = self.usuario
-            contraseña = self.contraseÑa
+            u = buscar_usuario_recursivo(lista_usuarios, self.usuario)
 
-            for u in lista_usuarios:
-                 if u['usuario'] == usuario and u['contraseña'] == contraseña:
-                    mostrar_bienvenida(u)
-                    return True
-            intentos -=1
+            if u and u['contraseña'] == self.contraseÑa:
+                mostrar_bienvenida(u)
+                return u
+            
+            intentos -= 1
             print(f"\n  Datos incorrectos. Te quedan {intentos} intentos.\n")
 
         print("Has superado el limite de intentos.")
-        return False
+        return []
 
 
 def mostrar_bienvenida(u):

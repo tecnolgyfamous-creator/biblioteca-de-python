@@ -19,6 +19,26 @@ inventario_libros = [
 
  ]
 
+COLUMNAS = ["TITULO", "GENERO", "STOCK"]
+
+def crear_matriz():
+    """Extrae los datos de inventario_libros y arma la matriz dinámicamente."""
+    matriz = []
+    for libro in inventario_libros:
+        matriz.append([libro.titulo.strip(), libro.genero, libro.stock])
+    return matriz
+
+def mostrar_matriz():
+    """Muestra la matriz formateada en la consola."""
+    matriz = crear_matriz()
+    print("\n=== MATRIZ DE LIBROS ===")
+    print(f"{COLUMNAS[0]:30} {COLUMNAS[1]:20} {COLUMNAS[2]}")
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            ancho = 30 if j == 0 else 20 if j == 1 else 0
+            print(f"{str(matriz[i][j]):{ancho}}", end=" ")
+        print()
+
 def buscar_libro(titulo_buscado):
         encontrado = False
         for libro in inventario_libros:

@@ -33,8 +33,8 @@ contraseña_caja.grid(  row=1,column=1 , padx=10, pady=10)
 
 def verificar_login():
         login= usuario.usuario(usuario_caja.get() ,contraseña_caja.get() )
-        status = login.autenticar_usuario()
-        if(status == True):
+        Login_list = login.autenticar_usuario()
+        if Login_list:
             ventana.destroy()
             app = interfaz_main.ventanaMain()
             app.mainloop()

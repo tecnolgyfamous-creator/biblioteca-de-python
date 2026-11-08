@@ -1,6 +1,6 @@
 from usuario import usuario
 from prestamo import Prestamo
-from libros import mostrar_inventario
+from libros import mostrar_inventario,mostrar_matriz
 
 if __name__ == "__main__":
     print("=== SISTEMA DE BIBLIOTECA ===\n")
@@ -10,6 +10,8 @@ if __name__ == "__main__":
     usuario_conectado = login.autenticar_usuario()
 
     if usuario_conectado:
+        mostrar_matriz()
+
         gestion_prestamo = Prestamo(usuario_conectado)
 
         # Se realiza el préstamo de un libro
