@@ -1,0 +1,6 @@
+usuario|contraseña|nombre
+ana_gomez|segura2026*|ana gomez
+stolarSEA245|clave1234|Stolar Sirlupú Enrique Arturo
+JimenezPJL123|password987|Jimenez Prada Jorge Luis
+luzmarina|admin#2026 |luz marina
+matin|clave3546martin rios salazar
